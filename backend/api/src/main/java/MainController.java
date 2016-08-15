@@ -5,12 +5,15 @@ import java.util.List;
 import model.Item;
 import model.Menu;
 import model.Merchant;
+import model.Order;
 import model.Table;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +23,7 @@ public class MainController {
 	
 	static HashMap<String, Menu> menus = new HashMap<String, Menu>();
 	static HashMap<String, Merchant> merchants = new HashMap<String, Merchant>();
+	static HashMap<String, List<Order>> orders = new HashMap<String, List<Order>>();
 
     @RequestMapping("/Merchant/{merchantId}")
     public @ResponseBody Merchant getMerchant(@PathVariable("merchantId") String merchantId) throws Exception {
@@ -38,6 +42,27 @@ public class MainController {
     	}
 
     	return menu;
+    }
+
+    @RequestMapping(value="/SubmitOrder", method=RequestMethod.POST)
+    public String submitOrder(@ModelAttribute Order order) {
+    	List<Order> merchantOrders = orders.get(order.getMerchantId());
+    	if (merchantOrders == null) {
+    		merchantOrders = new ArrayList<Order>();
+    		orders.put(order.getMerchantId(), merchantOrders);
+    	}
+    	merchantOrders.add(order);
+        return "result";
+    }
+    
+    @RequestMapping("/Orders/{merchantId}")
+    public @ResponseBody List<Order> getOrders(@PathVariable("merchantId") String merchantId) throws Exception {
+    	List<Order> merchantOrders = orders.get(merchantId);
+    	if (merchantOrders == null) {
+    		merchantOrders = new ArrayList<Order>();
+    	}
+
+    	return merchantOrders;
     }
 
     public static void main(String[] args) throws Exception {
