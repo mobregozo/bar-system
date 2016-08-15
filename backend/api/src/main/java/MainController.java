@@ -17,40 +17,51 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableAutoConfiguration
 public class MainController {
+	
+	static HashMap<String, Menu> menus = new HashMap<String, Menu>();
+	static HashMap<String, Merchant> merchants = new HashMap<String, Merchant>();
 
-    @RequestMapping("/Merchant")
-    public @ResponseBody Merchant getMerchant() {
-    	List<Table> tables = new ArrayList<Table>();
-    	tables.add(new Table("25892e17-80f6-415f-9c65-7395632f0223", "Table1"));
-    	tables.add(new Table("e33898de-6302-4756-8f0c-5f6c5218e02e", "Table2"));
-        return new Merchant(1, "Schlawinchen", tables);
+    @RequestMapping("/Merchant/{merchantId}")
+    public @ResponseBody Merchant getMerchant(@PathVariable("merchantId") String merchantId) throws Exception {
+    	Merchant merchant = merchants.get(merchantId);
+    	if (merchant == null) {
+    		throw new Exception("Merchant not found");
+    	}
+        return merchant;
     }
     
-    @RequestMapping("/Menu/{id}")
-    public @ResponseBody Menu getMenu(@PathVariable("id") long id) throws Exception {
-    	
-    	HashMap<Long, Menu> menus = new HashMap<Long, Menu>();
-    	
+    @RequestMapping("/Menu/{tableId}")
+    public @ResponseBody Menu getMenu(@PathVariable("tableId") String tableId) throws Exception {
+    	Menu menu = menus.get(tableId);
+    	if (menu == null) {
+    		throw new Exception("Table not found");
+    	}
+
+    	return menu;
+    }
+
+    public static void main(String[] args) throws Exception {
     	// Mock data
+    	
+    	// Menus
     	List<Item> items = new ArrayList<Item>();
     	items.add(new Item("Coca-Cola 300CC", "$10", "Drinks", "http://www.coca-colacompany.com/content/dam/journey/us/en/private/2015/02/chronology10-1280-900-bfb7f27c.jpg"));
     	items.add(new Item("Sprite 300CC", "$120", "Drinks", "http://pngimg.com/upload/sprite_PNG8920.png"));
     	items.add(new Item("Hamburgesa clasica", "$26", "Food", "http://www.recetahamburguesa.com/ImagenesRecetaHamburguesa/ImagenesRecetaHamburguesa/receta-hamburguesa-thermomix.jpg"));
-    	Menu menu1 = new Menu(1, "Schlawinchen", items);
+    	Menu menuSchlawinchen = new Menu(1, "Schlawinchen", items);
+    	menus.put("1", menuSchlawinchen);
+    	menus.put("2", menuSchlawinchen);
     	
-    	menus.put(1L, menu1);
-    	// Mock data
-
-
-    	Menu menu = menus.get(id);
-    	if (menu == null) {
-    		throw new Exception("Merchant id not found");
-    	}
+    	// Merchants
+    	List<Table> tables = new ArrayList<Table>();
+    	tables.add(new Table("1", "Table1"));
+    	tables.add(new Table("2", "Table2"));
+    	Merchant schlawinchen = new Merchant("1", "Schlawinchen", tables);
+    	merchants.put("1", schlawinchen);
     	
-    	return menus.get(id);
-    }
-
-    public static void main(String[] args) throws Exception {
+    	// end Mock data
+    	
+    	
         SpringApplication.run(MainController.class, args);
     }
 

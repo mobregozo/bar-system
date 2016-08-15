@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Merchant {
 	
-	private final long id;
+	private final String id;
 	private final String name;
 	private final List<Table> tables;
 
-	public Merchant(long id, String name, List<Table> tables) {
+	public Merchant(String id, String name, List<Table> tables) {
 		this.id = id;
 		this.name = name;
 		this.tables = tables;
@@ -18,7 +18,7 @@ public class Merchant {
 		return tables;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
