@@ -10,6 +10,7 @@ import model.Table;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class MainController {
 	static HashMap<String, Merchant> merchants = new HashMap<String, Merchant>();
 	static HashMap<String, List<Order>> orders = new HashMap<String, List<Order>>();
 
+	@CrossOrigin
     @RequestMapping("/Merchant/{merchantId}")
     public @ResponseBody Merchant getMerchant(@PathVariable("merchantId") String merchantId) throws Exception {
     	Merchant merchant = merchants.get(merchantId);
@@ -33,7 +35,8 @@ public class MainController {
     	}
         return merchant;
     }
-    
+
+	@CrossOrigin
     @RequestMapping("/Menu/{tableId}")
     public @ResponseBody Menu getMenu(@PathVariable("tableId") String tableId) throws Exception {
     	Menu menu = menus.get(tableId);
@@ -44,6 +47,7 @@ public class MainController {
     	return menu;
     }
 
+	@CrossOrigin
     @RequestMapping(value="/SubmitOrder", method=RequestMethod.POST)
     public String submitOrder(@ModelAttribute Order order) {
     	List<Order> merchantOrders = orders.get(order.getMerchantId());
@@ -54,7 +58,8 @@ public class MainController {
     	merchantOrders.add(order);
         return "result";
     }
-    
+
+	@CrossOrigin
     @RequestMapping("/Orders/{merchantId}")
     public @ResponseBody List<Order> getOrders(@PathVariable("merchantId") String merchantId) throws Exception {
     	List<Order> merchantOrders = orders.get(merchantId);
