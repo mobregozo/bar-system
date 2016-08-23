@@ -110,6 +110,7 @@ public class MainController {
     	
     	menus.put("1", menuSchlawinchen);
     	menus.put("2", menuSchlawinchen);
+    	menus.put("74d9d693-53b3-4e3c-9562-a9781f0be904", menuSchlawinchen);
     	
     	// Merchants
     	List<Table> tables = new ArrayList<Table>();
