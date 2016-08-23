@@ -115,6 +115,8 @@ public class MainController {
     	List<Table> tables = new ArrayList<Table>();
     	tables.add(new Table("1", "Table1"));
     	tables.add(new Table("2", "Table2"));
+    	tables.add(new Table("74d9d693-53b3-4e3c-9562-a9781f0be904", "Table3"));
+    	
     	Merchant harriz = new Merchant("1", "Harriz", tables);
     	merchants.put("1", harriz);
     	
