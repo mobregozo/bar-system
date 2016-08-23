@@ -74,11 +74,40 @@ public class MainController {
     	// Mock data
     	
     	// Menus
-    	List<Item> items = new ArrayList<Item>();
-    	items.add(new Item("Coca-Cola 300CC", "$10", "Drinks", "http://www.coca-colacompany.com/content/dam/journey/us/en/private/2015/02/chronology10-1280-900-bfb7f27c.jpg"));
-    	items.add(new Item("Sprite 300CC", "$120", "Drinks", "http://pngimg.com/upload/sprite_PNG8920.png"));
-    	items.add(new Item("Hamburgesa clasica", "$26", "Food", "http://www.recetahamburguesa.com/ImagenesRecetaHamburguesa/ImagenesRecetaHamburguesa/receta-hamburguesa-thermomix.jpg"));
-    	Menu menuSchlawinchen = new Menu(1, "Schlawinchen", items);
+    	List<Item> items = new ArrayList<Item>();    	
+    	
+    	items.add(new Item("Kolsch", "$40", "Cervezas", "http://www.bonappetit.com/wp-content/uploads/2013/07/reissdorf-kolsch.jpg"));
+    	items.add(new Item("Scotch", "$45", "Cervezas", "http://mcauslan.com/app/uploads/2013/07/beer_scotchale.jpg"));
+    	items.add(new Item("Porter", "$50", "Cervezas", "https://www.fullers.co.uk/~/media/mainsite/Beers/Optimised%20pumps/London-Porter_660X710_v3.png"));
+    	items.add(new Item("Honey", "$43", "Cervezas", "http://pitchenginelive.blob.core.windows.net/dev/35680528-9df1-488e-b358-51dbe604495c/82f3da59-2d7e-4d86-931b-a564089970b6.jpg"));
+    	items.add(new Item("Stout", "$50", "Cervezas", "https://mygutinstinct.files.wordpress.com/2011/03/bison-brewing-chocolate-stout-590.jpg"));
+    	items.add(new Item("Barley Wine", "$50", "Cervezas", "http://www.cdn.sierranevada.com/sites/www.sierranevada.com/files/content/beers/bigfoot/bigfoot02-nodate.png"));
+    	items.add(new Item("Imperial Stout", "$60", "Cervezas", "https://si.wsj.net/public/resources/images/OB-RL030_halffu_OZ_20120118171014.jpg"));
+    	items.add(new Item("India Pale Ale", "$34", "Cervezas", "http://coneyislandbeer.com/wp-content/uploads/2015/10/overpass-ipa-450x450.png"));
+    	
+    	items.add(new Item("Coca-Cola", "$20", "Bebidas Sin Alcohol", "http://bk-emea-prd.s3.amazonaws.com/sites/burgerking.es/files/BK_Web_COCACOLA_500X540px.png"));
+    	items.add(new Item("Sprite", "$30", "Bebidas Sin Alcohol", "http://www.burgerking.com.sg/upload/image/Product/35/beverage-sprite-thumb.jpg"));
+    	items.add(new Item("Agua Mineral VillaVicencio", "$25", "Bebidas Sin Alcohol", "http://www.staples.com.ar/images/pg/GASVC500X12_1.jpg?"));
+    	items.add(new Item("Licaudos", "$40", "Bebidas Sin Alcohol", "http://www.melodijolola.com/media/files/styles/large/public/licuado.jpg?itok=QQKW6vf-"));
+    	
+    	items.add(new Item("Simple", "$60", "Hamburgesas", "http://burgerking.s3-website-us-east-1.amazonaws.com/sites/default/files/hamburgesa_0.png"));
+    	items.add(new Item("Completa", "$80", "Hamburgesas", "http://www.redesymarketing.com/wp-content/uploads/2012/08/hamburguesa.jpg"));
+    	items.add(new Item("Bacon", "$75", "Hamburgesas", "http://picview.info/download/20150305/food-hamburger-beef-onion-bacon-pickles-cheese-sesame-1400x1050.jpg"));
+    	items.add(new Item("Cerdo", "$70", "Hamburgesas", "http://cmslogistics.es/79-thickbox_default/hamburguesa-de-cerdo-iberico.jpg"));
+    	
+    	items.add(new Item("Mozzarella", "$50", "Pizzas", "https://cdn.nexternal.com/cincyfav3/images/larosas_cheese_pizzas1.jpg"));
+    	items.add(new Item("Napolitana", "$80", "Pizzas", "http://www.pngall.com/wp-content/uploads/2016/05/Pizza-Free-PNG-Image.png"));
+    	items.add(new Item("Salame", "$80", "Pizzas", "http://www.titospizzaspringhill.com/wp-content/uploads/2015/09/pixxa2.png"));
+    	
+    	items.add(new Item("Helado", "$30", "Postres", "http://cremhelado-dev.e-nnovva.com/wp-content/uploads/2015/10/helado_no_derrite1.jpg"));
+    	items.add(new Item("Flan", "$40", "Postres", "http://www.meals.com/ImagesRecipes/144670lrg.jpg"));
+    	items.add(new Item("Brownee", "$43", "Postres", "http://sprites.comohacerpara.com/img/11625a-postre-con-patatas-chocolate-recetas.jpg"));
+    	items.add(new Item("Lemon Pie", "$54", "Postres", "http://www.edwardsdesserts.com/images/whole-pies/img-products-indiv-whole-pies-lemon.jpg"));
+    	items.add(new Item("Cheese Cake", "$46", "Postres", "http://www.thecheesecakefactory.com/assets/images/Menu-Import/CCF_FreshStrawberryCheesecake.jpg"));
+    	
+    	Menu menuSchlawinchen = new Menu(1, "Harriz", items);
+    	
+    	
     	menus.put("1", menuSchlawinchen);
     	menus.put("2", menuSchlawinchen);
     	
@@ -86,8 +115,8 @@ public class MainController {
     	List<Table> tables = new ArrayList<Table>();
     	tables.add(new Table("1", "Table1"));
     	tables.add(new Table("2", "Table2"));
-    	Merchant schlawinchen = new Merchant("1", "Schlawinchen", tables);
-    	merchants.put("1", schlawinchen);
+    	Merchant harriz = new Merchant("1", "Harriz", tables);
+    	merchants.put("1", harriz);
     	
     	// end Mock data
     	
